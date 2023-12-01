@@ -1,0 +1,26 @@
+.img {
+  background-image: url("../../img/HeaderImg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 30rem;
+  .cover {
+    width: 100%;
+    height: 30rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    h1 {
+      margin: 0;
+      color: white;
+    }
+    button {
+      width: 10rem;
+      height: 2rem;
+      font-weight: bold;
+    }
+  }
+}

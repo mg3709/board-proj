@@ -1,0 +1,11 @@
+.container {
+  margin: 5rem auto;
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+}

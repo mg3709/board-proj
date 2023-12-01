@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  height: 100vh;
+  border: 1px solid #ccc;
+  img {
+    width: 3rem;
+    height: 3rem;
+    border: 5px solid black;
+    border-radius: 12px;
+    padding: 3px;
+    cursor: pointer;
+  }
+  .sidebar {
+    width: 200px;
+    padding: 20px;
+    margin-top: 5rem;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    li {
+      list-style: none;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+  }
+}

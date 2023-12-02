@@ -1,0 +1,54 @@
+@mixin border($color, $back) {
+  input {
+    width: 40rem;
+    height: 2rem;
+    border-color: $color;
+    &:focus {
+      background-color: $back;
+    }
+  }
+  textarea {
+    width: 40rem;
+    height: 30rem;
+    resize: none;
+    border-color: $color;
+    &:focus {
+      background-color: $back;
+    }
+  }
+}
+
+.container {
+  margin: 2rem auto;
+  .btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+  }
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    label {
+      display: block;
+    }
+    .control {
+      @include border(#08088a, rgba(91, 47, 235, 0.22));
+    }
+    .invalid {
+      @include border(#b40404, rgba(235, 47, 47, 0.22));
+    }
+    .error {
+      color: #b40404;
+    }
+  }
+
+  button {
+    width: 10rem;
+    height: 2rem;
+    font-weight: bold;
+  }
+}

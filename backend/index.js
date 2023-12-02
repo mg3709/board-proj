@@ -13,6 +13,32 @@ const BOOK_DOMAIN =
 app.use(bodyParser.json());
 app.use(cors());
 
+app.post("/api/write-board", async (req, res) => {
+  if (req.method === "POST") {
+    const data = req.body;
+    const client = await MongoClient.connect(BOARD_DOMAIN);
+    const db = client.db();
+    const boardCollection = db.collection("board");
+    const result = await boardCollection.insertOne(data);
+    console.log(result);
+    client.close();
+    res.json({ message: "WRITE SUCCESS" });
+  }
+});
+
+app.post("/api/write-book", async (req, res) => {
+  if (req.method === "POST") {
+    const data = req.body;
+    const client = await MongoClient.connect(BOOK_DOMAIN);
+    const db = client.db();
+    const bookCollection = db.collection("book");
+    const result = await bookCollection.insertOne(data);
+    console.log(result);
+    client.close();
+    res.json({ message: "WRITE SUCCESS" });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is Running ${port}`);
 });

@@ -18,13 +18,13 @@ const MainNav: React.FC = () => {
           <li onClick={() => nav("/introduce")}>
             <p>INTRODUCE</p>
           </li>
-          <li>
+          <li onClick={() => nav("/book")}>
             <p>BOOK</p>
           </li>
-          <li>
+          <li onClick={() => nav("/board")}>
             <p>BOARD</p>
           </li>
-          <li>
+          <li onClick={() => nav("/write")}>
             <p>WRITE</p>
           </li>
         </ul>

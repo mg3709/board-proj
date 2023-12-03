@@ -8,6 +8,8 @@ import WritePage from "./page/WritePage";
 import BookPage from "./page/BookPage";
 import BoardPage from "./page/BoardPage";
 import { queryClient } from "./util/http";
+import BookDetailPage from "./page/BookDetailPage";
+import BoardDetailPage from "./page/BoardDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
       { path: "write", element: <WritePage /> },
       { path: "book", element: <BookPage /> },
       { path: "board", element: <BoardPage /> },
+      { path: "book/:id", element: <BookDetailPage /> },
+      { path: "board/:id", element: <BoardDetailPage /> },
     ],
   },
 ]);

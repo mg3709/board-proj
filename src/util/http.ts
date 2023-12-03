@@ -47,3 +47,17 @@ export const fetchBooksHandler = async () => {
   console.log(data);
   return data;
 };
+
+export const fetchBoardHandler = async (id: string) => {
+  const res = await axios.get(`http://localhost:8081/api/detail-board/${id}`);
+  const data = res.data;
+  console.log(data);
+  return data;
+};
+
+export const fetchBookHandler = async (id: string) => {
+  const res = await axios.get(`http://localhost:8081/api/detail-book/${id}`);
+  const data = res.data;
+  console.log(data);
+  return data;
+};

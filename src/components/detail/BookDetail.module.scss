@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .card {
+    width: 80rem;
+    display: flex;
+    flex-direction: column;
+    .line {
+      border: 1px solid blue;
+    }
+    .info {
+      display: flex;
+      justify-content: space-between;
+    }
+    .img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 3rem;
+      img {
+        width: 40rem;
+        height: 30rem;
+      }
+    }
+    .content {
+      height: 30rem;
+      padding: 20px;
+      margin-top: 3rem;
+      border-radius: 12px;
+      background-color: #ccc;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+      overflow: auto;
+      p {
+        margin: 0;
+      }
+    }
+  }
+  button {
+    width: 10rem;
+    height: 2rem;
+    font-weight: bold;
+    margin-top: 3rem;
+  }
+}

@@ -39,6 +39,30 @@ app.post("/api/write-book", async (req, res) => {
   }
 });
 
+app.get("/api/get-board", async (req, res) => {
+  if (req.method === "GET") {
+    const client = await MongoClient.connect(BOARD_DOMAIN);
+    const db = client.db();
+    const boardCollection = db.collection("board");
+    const result = await boardCollection.find().toArray();
+    console.log(result);
+    client.close();
+    res.json(result);
+  }
+});
+
+app.get("/api/get-book", async (req, res) => {
+  if (req.method === "GET") {
+    const client = await MongoClient.connect(BOOK_DOMAIN);
+    const db = client.db();
+    const bookCollection = db.collection("book");
+    const result = await bookCollection.find().toArray();
+    console.log(result);
+    client.close();
+    res.json(result);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is Running ${port}`);
 });

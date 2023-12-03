@@ -33,3 +33,17 @@ export const writeBookHandler = async (formData: BoardType) => {
   console.log(data);
   return data;
 };
+
+export const fetchBoardsHandler = async () => {
+  const res = await axios.get("http://localhost:8081/api/get-board");
+  const data = res.data;
+  console.log(data);
+  return data;
+};
+
+export const fetchBooksHandler = async () => {
+  const res = await axios.get("http://localhost:8081/api/get-book");
+  const data = res.data;
+  console.log(data);
+  return data;
+};

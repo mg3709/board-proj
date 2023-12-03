@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const MainNav: React.FC = () => {
   const { scrollY } = useScroll();
-  const pageY = useTransform(scrollY, [0, 1000], [0, 1000]);
+  const pageY = useTransform(scrollY, [0, 5000], [0, 5000]);
 
   const nav = useNavigate();
 

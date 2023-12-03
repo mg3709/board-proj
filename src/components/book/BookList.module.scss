@@ -1,0 +1,15 @@
+.container {
+  width: 25rem;
+  height: 30rem;
+  list-style: none;
+  img {
+    width: 25rem;
+    height: 25rem;
+  }
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+  }
+}

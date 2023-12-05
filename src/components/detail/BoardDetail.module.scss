@@ -29,12 +29,38 @@
       padding: 20px;
       margin-top: 3rem;
       border-radius: 12px;
-      background-color: #ccc;
+      background-color: #f2f2f2;
       box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
       overflow: auto;
       p {
         margin: 0;
       }
+    }
+  }
+  .comment {
+    width: 80rem;
+    margin-top: 5rem;
+    .line {
+      border: 1px solid blue;
+      margin: 1rem auto;
+    }
+    .inputbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    input {
+      width: 60rem;
+      height: 8rem;
+    }
+    button {
+      margin: 0;
+      width: 5rem;
+      height: 8.3rem;
+      background-color: #424242;
+      color: white;
     }
   }
   button {

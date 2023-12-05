@@ -73,13 +73,18 @@ const WriteForm: React.FC = () => {
       return;
     }
 
+    const Time = new Date();
     const currentTime = new Date().toLocaleDateString();
+
+    const hour = Time.getHours().toString();
+    const minutes = Time.getMinutes().toString();
 
     const formData: BoardType = {
       title: title,
       name: name,
       image: image,
       content: content,
+      comment: [{ text: "댓글을 추가해주세요", time: `${hour}:${minutes}` }],
       date: currentTime,
     };
 

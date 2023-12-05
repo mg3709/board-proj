@@ -1,8 +1,8 @@
 import React from "react";
-import styled from "./BoardComment.module.scss";
+import styled from "./BookComment.module.scss";
 import { CommentList } from "../../model/Type";
 
-const BoardComment: React.FC<{ comment: CommentList }> = (props) => {
+const BookComment: React.FC<{ comment: CommentList }> = (props) => {
   const { comment } = props;
 
   return (
@@ -13,4 +13,4 @@ const BoardComment: React.FC<{ comment: CommentList }> = (props) => {
   );
 };
 
-export default BoardComment;
+export default BookComment;

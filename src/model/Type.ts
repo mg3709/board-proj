@@ -14,6 +14,11 @@ export type Comments = {
   time: string;
 }[];
 
+export type CommentList = {
+  text: string;
+  time: string;
+};
+
 export type IdBoard = BoardType & {
   _id: ObjectId;
 };

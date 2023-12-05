@@ -1,6 +1,6 @@
 import { QueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { BoardType } from "../model/Type";
+import { BoardType, CommentList } from "../model/Type";
 
 export const queryClient = new QueryClient();
 
@@ -57,6 +57,42 @@ export const fetchBoardHandler = async (id: string) => {
 
 export const fetchBookHandler = async (id: string) => {
   const res = await axios.get(`http://localhost:8081/api/detail-book/${id}`);
+  const data = res.data;
+  console.log(data);
+  return data;
+};
+
+export const writeBoardCommentHandler = async (
+  id: string,
+  commentData: CommentList
+) => {
+  const res = await axios.put(
+    `http://localhost:8081/api/board-comment/${id}`,
+    commentData,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const data = res.data;
+  console.log(data);
+  return data;
+};
+
+export const writeBookCommentHandler = async (
+  id: string,
+  commentData: CommentList
+) => {
+  const res = await axios.put(
+    `http://localhost:8081/api/book-comment/${id}`,
+    commentData,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
   const data = res.data;
   console.log(data);
   return data;

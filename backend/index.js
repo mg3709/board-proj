@@ -89,6 +89,48 @@ app.get("/api/detail-book/:id", async (req, res) => {
   }
 });
 
+app.put("/api/board-comment/:id", async (req, res) => {
+  if (req.method === "PUT") {
+    const id = req.params.id;
+    const data = req.body;
+    const client = await MongoClient.connect(BOARD_DOMAIN);
+    const db = client.db();
+    const boardCollection = db.collection("board");
+
+    const filter = { _id: new ObjectId(id) };
+    //데이터가 덮어씌워지지 않고 제대로 추가만 할 수 있도록 update 연산자 $push 사용
+    const update = {
+      $push: { comment: data },
+    };
+
+    //updateOne(해당하는 ID, update 할 내용)
+    const result = await boardCollection.updateOne(filter, update);
+    console.log(result);
+    client.close();
+    res.json({ message: "update success" });
+  }
+});
+
+app.put("/api/book-comment/:id", async (req, res) => {
+  if (req.method === "PUT") {
+    const id = req.params.id;
+    const data = req.body;
+    const client = await MongoClient.connect(BOOK_DOMAIN);
+    const db = client.db();
+    const bookCollection = db.collection("book");
+
+    const filter = { _id: new ObjectId(id) };
+    const update = {
+      $push: { comment: data },
+    };
+
+    const result = await bookCollection.updateOne(filter, update);
+    console.log(result);
+    client.close();
+    res.json({ message: "update success" });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is Running ${port}`);
 });

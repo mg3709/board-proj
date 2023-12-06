@@ -4,16 +4,13 @@ import Content from "./Content";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { hotContentBoardHandler, hotContentBookHandler } from "../../util/http";
-
-const DUMMY = [1, 2, 3, 4, 5, 6];
+import { IdBoard } from "../../model/Type";
 
 const Home: React.FC = () => {
   const boardQuery = useQuery({
     queryKey: ["hot-board"],
     queryFn: hotContentBoardHandler,
   });
-
-  console.log(boardQuery.data);
 
   const bookQuery = useQuery({
     queryKey: ["hot-book"],
@@ -28,9 +25,14 @@ const Home: React.FC = () => {
       className={styled.container}
     >
       <ul>
-        {DUMMY.map((e) => (
-          <Content key={e} data={e} />
-        ))}
+        {boardQuery.data &&
+          boardQuery.data.map((e: IdBoard) => (
+            <Content key={e._id.toString()} data={e} />
+          ))}
+        {bookQuery.data &&
+          bookQuery.data.map((e: IdBoard) => (
+            <Content key={e._id.toString()} data={e} />
+          ))}
       </ul>
     </motion.div>
   );

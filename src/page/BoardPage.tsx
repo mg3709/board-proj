@@ -4,6 +4,7 @@ import Board from "../components/board/Board";
 const BoardPage: React.FC = () => {
   return (
     <div>
+      <p>BOARD</p>
       <Board />
     </div>
   );

@@ -83,7 +83,7 @@ const BoardDetail: React.FC = () => {
             </div>
           </div>
           <div className={styled.comment}>
-            <label htmlFor="comment">전체 댓글</label>
+            <label htmlFor="comment">전체 댓글 {data.comment.length}개</label>
             <div className={styled.line}></div>
             <ul>
               {data.comment.map((e: CommentList) => (
@@ -111,7 +111,12 @@ const BoardDetail: React.FC = () => {
     );
   }
 
-  return <div>{content}</div>;
+  return (
+    <div>
+      <p>BOARD &rarr; DETAIL</p>
+      {content}
+    </div>
+  );
 };
 
 export default BoardDetail;

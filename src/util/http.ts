@@ -97,3 +97,17 @@ export const writeBookCommentHandler = async (
   console.log(data);
   return data;
 };
+
+export const hotContentBoardHandler = async () => {
+  const res = await axios.get("http://localhost:8081/api/hot-board");
+  const data = res.data;
+  console.log(data);
+  return data;
+};
+
+export const hotContentBookHandler = async () => {
+  const res = await axios.get("http://localhost:8081/api/hot-book");
+  const data = res.data;
+  console.log(data);
+  return data;
+};

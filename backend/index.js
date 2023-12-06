@@ -131,6 +131,59 @@ app.put("/api/book-comment/:id", async (req, res) => {
   }
 });
 
+//hot content에 들어가는 상위 3개의 게시글
+app.get("/api/hot-board", async (req, res) => {
+  if (req.method === "GET") {
+    const client = await MongoClient.connect(BOARD_DOMAIN);
+    const db = client.db();
+    const boardCollection = db.collection("board");
+    const result = await boardCollection
+      .aggregate([
+        {
+          $addFields: {
+            commentCount: { $size: "$comment" },
+          },
+        },
+        {
+          $sort: { commentCount: -1 },
+        },
+        {
+          $limit: 3,
+        },
+      ])
+      .toArray();
+    console.log(result);
+    client.close();
+    res.json(result);
+  }
+});
+
+app.get("/api/hot-book", async (req, res) => {
+  if (req.method === "GET") {
+    const client = await MongoClient.connect(BOOK_DOMAIN);
+    const db = client.db();
+    const bookCollection = db.collection("book");
+    const result = await bookCollection
+      .aggregate([
+        {
+          $addFields: {
+            commentCount: { $size: "$comment" },
+          },
+        },
+        {
+          $sort: { commentCount: -1 },
+        },
+        {
+          $limit: 3,
+        },
+      ])
+      .toArray();
+    console.log(result);
+    client.close();
+    res.json(result);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is Running ${port}`);
 });

@@ -41,6 +41,33 @@
     .invalid {
       @include border(#b40404, rgba(235, 47, 47, 0.22));
     }
+    .bad {
+      width: 40rem;
+      padding: 4px;
+      label {
+        margin-bottom: 12px;
+      }
+      input {
+        width: 39rem;
+        padding: 10px;
+        background-color: #b40404;
+        font-weight: bold;
+      }
+    }
+    .good {
+      width: 40rem;
+      padding: 4px;
+      label {
+        margin-bottom: 12px;
+      }
+      input {
+        width: 39rem;
+        padding: 10px;
+        background-color: #08088a;
+        color: white;
+        font-weight: bold;
+      }
+    }
     .error {
       color: #b40404;
     }

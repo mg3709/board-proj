@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 const Content: React.FC<{ data: IdBoard }> = (props) => {
   const { data } = props;
 
+  console.log(data.image);
+
   const Images = {
     backgroundImage: `url(${data.image})`,
   };

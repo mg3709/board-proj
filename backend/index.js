@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const multer = require("multer");
+const path = require("path");
 const { MongoClient, ObjectId } = require("mongodb");
 const app = express();
 
@@ -10,8 +12,43 @@ const BOARD_DOMAIN =
 const BOOK_DOMAIN =
   "mongodb+srv://user1:user11@atlascluster.rejelqj.mongodb.net/book?retryWrites=true&w=majority";
 
+// 이미지를 저장할 디렉토리 설정
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/"); // uploads 폴더에 이미지 저장
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)); // 파일 이름 설정
+  },
+});
+const upload = multer({ storage: storage });
+
 app.use(bodyParser.json());
 app.use(cors());
+
+// 이미지 업로드////////////////////////////////////////////////////////////////
+
+app.post("/api/img-upload", upload.single("image"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "이미지 파일이 없습니다." });
+    }
+
+    // 이미지 정보를 MongoDB에 저장하거나 필요한 동작 수행
+    const imagePath = req.file.path; // 이미지 파일 경로
+    const imageUrl = `http://localhost:${port}/${path.basename(imagePath)}`;
+
+    // 이미지 URL
+    res.status(200).json(imageUrl);
+  } catch (error) {
+    console.error("이미지 업로드 오류:", error);
+    res.status(500).json({ error: "이미지 업로드 중 오류가 발생했습니다." });
+  }
+});
+
+app.use(express.static(path.join(__dirname, "uploads")));
+
+/////////////////////////////////////////////////////////////////////////////////
 
 app.post("/api/write-board", async (req, res) => {
   if (req.method === "POST") {

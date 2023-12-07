@@ -10,6 +10,7 @@ import {
   writeBookHandler,
 } from "../../util/http";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const WriteForm: React.FC = () => {
   const [selectForm, setSelectForm] = useState(false);
@@ -51,14 +52,6 @@ const WriteForm: React.FC = () => {
   } = useInput((value) => value.length !== 0);
 
   const {
-    value: image,
-    onChangeValue: onChangeImage,
-    valueCheckValue: imageCheck,
-    onBlurValue: onBlurImage,
-    reset: resetImage,
-  } = useInput((value) => value.length !== 0);
-
-  const {
     value: content,
     onChangeValue: onChangeContent,
     valueCheckValue: contentCheck,
@@ -66,12 +59,53 @@ const WriteForm: React.FC = () => {
     reset: resetContent,
   } = useInput((value) => value.length !== 0);
 
-  const formHandler = (e: React.FormEvent) => {
+  const [file, setFile] = useState<File[] | null>(null);
+  const [blur, setBlur] = useState(false);
+
+  const imageCheck = file && file.length !== 0;
+  const imageCheckValue = blur && !imageCheck;
+
+  const onChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFile(e.target.files ? Array.from(e.target.files) : null);
+  };
+
+  const onBlurImage = () => {
+    setBlur(true);
+  };
+
+  const resetImage = () => {
+    setFile(null);
+    setBlur(false);
+  };
+
+  const handleUpload = async () => {
+    const formData = new FormData();
+    if (file && file.length > 0) {
+      formData.append("image", file[0]);
+    }
+    try {
+      const res = await axios.post(
+        "http://localhost:8081/api/img-upload",
+        formData
+      );
+      const data = res.data;
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error("이미지 업로드 오류 : ", error);
+    }
+  };
+
+  const formHandler = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (titleCheck || nameCheck || imageCheck || contentCheck) {
+    if (titleCheck || nameCheck || imageCheckValue || contentCheck) {
+      console.log("입력해주세요");
       return;
     }
+
+    //이미지 url 가져오기
+    const imageUrl = await handleUpload();
 
     const Time = new Date();
     const currentTime = new Date().toLocaleDateString();
@@ -82,11 +116,13 @@ const WriteForm: React.FC = () => {
     const formData: BoardType = {
       title: title,
       name: name,
-      image: image,
+      image: imageUrl,
       content: content,
       comment: [{ text: "댓글을 추가해주세요", time: `${hour}:${minutes}` }],
       date: currentTime,
     };
+
+    console.log(formData);
 
     if (!selectForm) {
       boardMutation.mutate(formData);
@@ -147,16 +183,15 @@ const WriteForm: React.FC = () => {
               <p className={styled.error}>이름을 다시 확인하세요</p>
             )}
           </div>
-          <div className={imageCheck ? styled.invalid : styled.control}>
+          <div className={imageCheckValue ? styled.bad : styled.good}>
             <label htmlFor="img">Image</label>
             <input
-              type="url"
+              type="file"
               id="img"
               onChange={onChangeImage}
               onBlur={onBlurImage}
-              value={image}
             />
-            {imageCheck && (
+            {imageCheckValue && (
               <p className={styled.error}>이미지를 다시 확인하세요</p>
             )}
           </div>

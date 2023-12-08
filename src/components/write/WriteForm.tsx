@@ -13,7 +13,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const WriteForm: React.FC = () => {
-  const [selectForm, setSelectForm] = useState(false);
+  const [selectForm, setSelectForm] = useState<boolean>(false);
+  const [isAnimate, setIsAnimate] = useState<boolean>(false);
   const nav = useNavigate();
 
   const boardMutation = useMutation({
@@ -103,7 +104,6 @@ const WriteForm: React.FC = () => {
       console.log("입력해주세요");
       return;
     }
-
     //이미지 url 가져오기
     const imageUrl = await handleUpload();
 
@@ -137,18 +137,34 @@ const WriteForm: React.FC = () => {
     resetContent();
   };
 
+  const boardButtonHandler = () => {
+    setSelectForm(false);
+    setIsAnimate(false);
+  };
+
+  const bookButtonHandler = () => {
+    setSelectForm(true);
+    setIsAnimate(true);
+  };
+
   return (
-    <div className={styled.container}>
+    <motion.div
+      key={isAnimate ? "animate" : "initial"}
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ type: "spring" }}
+      className={styled.container}
+    >
       <div className={styled.btns}>
         <motion.button
-          style={{ backgroundColor: selectForm ? "#ccc" : "#9A2EFE" }}
-          onClick={() => setSelectForm(false)}
+          style={{ backgroundColor: selectForm ? "#ccc" : "#08088a" }}
+          onClick={boardButtonHandler}
         >
           BOARD
         </motion.button>
         <motion.button
-          style={{ backgroundColor: selectForm ? "#9A2EFE" : "#ccc" }}
-          onClick={() => setSelectForm(true)}
+          style={{ backgroundColor: selectForm ? "#08088a" : "#ccc" }}
+          onClick={bookButtonHandler}
         >
           BOOK
         </motion.button>
@@ -215,7 +231,7 @@ const WriteForm: React.FC = () => {
           </div>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

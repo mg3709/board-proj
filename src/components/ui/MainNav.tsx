@@ -13,7 +13,13 @@ const MainNav: React.FC = () => {
   return (
     <motion.div style={{ y: pageY }} className={styled.container}>
       <div className={styled.sidebar}>
-        <img onClick={() => nav("/")} src={Logo} alt="logo" />
+        <motion.img
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring" }}
+          onClick={() => nav("/")}
+          src={Logo}
+          alt="logo"
+        />
         <ul>
           <li onClick={() => nav("/introduce")}>
             <p>INTRODUCE</p>

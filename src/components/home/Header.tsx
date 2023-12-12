@@ -15,7 +15,13 @@ const Header: React.FC = () => {
     >
       <div className={styled.cover}>
         <h1>HOT CONTENT</h1>
-        <button onClick={() => nav("/write")}>GET START</button>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring" }}
+          onClick={() => nav("/write")}
+        >
+          GET START
+        </motion.button>
       </div>
     </motion.div>
   );

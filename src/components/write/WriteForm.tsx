@@ -225,9 +225,14 @@ const WriteForm: React.FC = () => {
             )}
           </div>
           <div>
-            <button type="submit" onClick={formHandler}>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring" }}
+              type="submit"
+              onClick={formHandler}
+            >
               ADD
-            </button>
+            </motion.button>
           </div>
         </div>
       </form>

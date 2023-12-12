@@ -1,0 +1,34 @@
+.container {
+  background-color: black;
+  width: 100%;
+  height: 40rem;
+  h1 {
+    padding: 30px;
+    text-align: center;
+    color: white;
+    position: relative;
+    top: 8rem;
+  }
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 17rem;
+    .box {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 33.8rem;
+      height: 15rem;
+      border: 1px solid white;
+      color: white;
+      button {
+        width: 10rem;
+        height: 2rem;
+        font-weight: bold;
+      }
+    }
+  }
+}

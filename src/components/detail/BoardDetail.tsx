@@ -9,6 +9,7 @@ import {
 } from "../../util/http";
 import BoardComment from "./BoardComment";
 import { CommentList } from "../../model/Type";
+import { motion } from "framer-motion";
 
 const BoardDetail: React.FC = () => {
   const nav = useNavigate();
@@ -112,10 +113,19 @@ const BoardDetail: React.FC = () => {
   }
 
   return (
-    <div>
-      <p>BOARD &rarr; DETAIL</p>
+    <motion.div
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ type: "spring" }}
+    >
+      <p>
+        <span className={styled.ui} onClick={() => nav("/board")}>
+          BOARD
+        </span>{" "}
+        &rarr; <span className={styled.ui}>DETAIL</span>
+      </p>
       {content}
-    </div>
+    </motion.div>
   );
 };
 

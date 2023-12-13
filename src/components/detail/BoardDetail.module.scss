@@ -71,5 +71,12 @@
     height: 2rem;
     font-weight: bold;
     margin-top: 3rem;
+    &:hover {
+      background-color: #ccc;
+    }
   }
+}
+
+.ui {
+  cursor: pointer;
 }

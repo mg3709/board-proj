@@ -9,6 +9,7 @@ import {
 } from "../../util/http";
 import BookComment from "./BookComment";
 import { CommentList } from "../../model/Type";
+import { motion } from "framer-motion";
 
 const BookDetail: React.FC = () => {
   const nav = useNavigate();
@@ -111,10 +112,19 @@ const BookDetail: React.FC = () => {
   }
 
   return (
-    <div>
-      <p>BOOK &rarr; DETAIL</p>
+    <motion.div
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ type: "spring" }}
+    >
+      <p>
+        <span className={styled.ui} onClick={() => nav("/book")}>
+          BOOK
+        </span>{" "}
+        &rarr; <span className={styled.ui}>DETAIL</span>
+      </p>
       {content}
-    </div>
+    </motion.div>
   );
 };
 

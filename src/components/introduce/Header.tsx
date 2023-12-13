@@ -4,7 +4,11 @@ import styled from "./Header.module.scss";
 const Header: React.FC = () => {
   return (
     <div className={styled.container}>
-      <div></div>
+      <div className={styled.backImg}>
+        <div className={styled.cover}>
+          <h1>INTRODUCE</h1>
+        </div>
+      </div>
     </div>
   );
 };

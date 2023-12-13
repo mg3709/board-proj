@@ -11,7 +11,14 @@ const BoardList: React.FC<{ data: IdBoard }> = (props) => {
   const nav = useNavigate();
 
   return (
-    <li onClick={() => nav(`/board/${id}`)} className={styled.container}>
+    <motion.li
+      variants={{
+        hidden: { opacity: 0, scale: 1 },
+        visible: { opacity: 1, scale: [0.9, 1.1, 1] },
+      }}
+      onClick={() => nav(`/board/${id}`)}
+      className={styled.container}
+    >
       <img src={data.image} alt="img" />
       <motion.div
         whileHover={{ backgroundColor: "#ccc" }}
@@ -23,7 +30,7 @@ const BoardList: React.FC<{ data: IdBoard }> = (props) => {
         </div>
         <p>{data.date}</p>
       </motion.div>
-    </li>
+    </motion.li>
   );
 };
 

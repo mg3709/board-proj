@@ -29,6 +29,10 @@
         width: 10rem;
         height: 2rem;
         font-weight: bold;
+        transition: transform 0.2s;
+        &:hover {
+          transform: scale(1.1);
+        }
       }
     }
   }

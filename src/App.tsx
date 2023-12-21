@@ -10,6 +10,7 @@ import BoardPage from "./page/BoardPage";
 import { queryClient } from "./util/http";
 import BookDetailPage from "./page/BookDetailPage";
 import BoardDetailPage from "./page/BoardDetailPage";
+import ChatPage from "./page/ChatPage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: "board", element: <BoardPage /> },
       { path: "book/:id", element: <BookDetailPage /> },
       { path: "board/:id", element: <BoardDetailPage /> },
+      { path: "chat", element: <ChatPage /> },
     ],
   },
 ]);

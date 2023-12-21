@@ -6,11 +6,32 @@ const path = require("path");
 const { MongoClient, ObjectId } = require("mongodb");
 const app = express();
 
+//socket
+const server = require("http").createServer(app);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    credentials: true,
+  },
+});
+
+const socket_port = 8082;
+
 const port = 8081;
 const BOARD_DOMAIN =
   "mongodb+srv://user1:user11@atlascluster.rejelqj.mongodb.net/board?retryWrites=true&w=majority";
 const BOOK_DOMAIN =
   "mongodb+srv://user1:user11@atlascluster.rejelqj.mongodb.net/book?retryWrites=true&w=majority";
+
+//socket
+io.on("connection", (socket) => {
+  socket.on("message", ({ name, message }) => {
+    io.emit("message", { name, message });
+  });
+  socket.on("disconnection", ({ name }) => {
+    io.emit("message", { name, message: "님이 나가셨습니다" });
+  });
+});
 
 // 이미지를 저장할 디렉토리 설정
 const storage = multer.diskStorage({
@@ -178,7 +199,13 @@ app.get("/api/hot-board", async (req, res) => {
       .aggregate([
         {
           $addFields: {
-            commentCount: { $size: "$comment" },
+            commentCount: {
+              $cond: {
+                if: { $isArray: "$comment" },
+                then: { $size: "$comment" },
+                else: 0,
+              },
+            },
           },
         },
         {
@@ -204,7 +231,13 @@ app.get("/api/hot-book", async (req, res) => {
       .aggregate([
         {
           $addFields: {
-            commentCount: { $size: "$comment" },
+            commentCount: {
+              $cond: {
+                if: { $isArray: "$comment" },
+                then: { $size: "$comment" },
+                else: 0,
+              },
+            },
           },
         },
         {
@@ -219,6 +252,10 @@ app.get("/api/hot-book", async (req, res) => {
     client.close();
     res.json(result);
   }
+});
+
+server.listen(socket_port, () => {
+  console.log(`${socket_port} 번에서 socket 실행중...`);
 });
 
 app.listen(port, () => {

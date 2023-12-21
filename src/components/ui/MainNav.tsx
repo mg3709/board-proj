@@ -33,6 +33,9 @@ const MainNav: React.FC = () => {
           <li onClick={() => nav("/write")}>
             <p>WRITE</p>
           </li>
+          <li onClick={() => nav("/chat")}>
+            <p>Chat</p>
+          </li>
         </ul>
       </div>
     </motion.div>

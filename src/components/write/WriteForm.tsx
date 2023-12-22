@@ -12,6 +12,9 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const DOMAIN =
+  "http://ec2-15-164-202-85.ap-northeast-2.compute.amazonaws.com:8081";
+
 const WriteForm: React.FC = () => {
   const [selectForm, setSelectForm] = useState<boolean>(false);
   const [isAnimate, setIsAnimate] = useState<boolean>(false);
@@ -85,10 +88,7 @@ const WriteForm: React.FC = () => {
       formData.append("image", file[0]);
     }
     try {
-      const res = await axios.post(
-        "http://localhost:8081/api/img-upload",
-        formData
-      );
+      const res = await axios.post(`${DOMAIN}/api/img-upload`, formData);
       const data = res.data;
       console.log(data);
       return data;

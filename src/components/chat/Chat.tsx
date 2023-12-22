@@ -3,8 +3,9 @@ import styled from "./Chat.module.scss";
 import io from "socket.io-client";
 import { motion } from "framer-motion";
 
-const port = 8082;
-const socket = io(`http://localhost:${port}`);
+const DOMAIN =
+  "http://ec2-15-164-202-85.ap-northeast-2.compute.amazonaws.com:8082";
+const socket = io(`${DOMAIN}`);
 
 const Chat: React.FC = () => {
   const [state, setState] = useState({ message: "", name: "" });

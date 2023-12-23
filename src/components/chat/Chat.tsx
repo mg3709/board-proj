@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import { motion } from "framer-motion";
 
 const DOMAIN =
-  "http://ec2-43-201-250-35.ap-northeast-2.compute.amazonaws.com:8082";
+  "http://ec2-52-79-47-176.ap-northeast-2.compute.amazonaws.com:8082";
 const socket = io(`${DOMAIN}`);
 
 const Chat: React.FC = () => {

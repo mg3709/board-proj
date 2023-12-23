@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const DOMAIN =
-  "http://ec2-43-201-250-35.ap-northeast-2.compute.amazonaws.com:8081";
+  "http://ec2-52-79-47-176.ap-northeast-2.compute.amazonaws.com:8081";
 
 const WriteForm: React.FC = () => {
   const [selectForm, setSelectForm] = useState<boolean>(false);

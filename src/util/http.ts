@@ -5,7 +5,7 @@ import { BoardType, CommentList } from "../model/Type";
 export const queryClient = new QueryClient();
 
 const DOMAIN =
-  "http://ec2-43-201-250-35.ap-northeast-2.compute.amazonaws.com:8081";
+  "http://ec2-52-79-47-176.ap-northeast-2.compute.amazonaws.com:8081";
 
 export const writeBoardHandler = async (formData: BoardType) => {
   const res = await axios.post(`${DOMAIN}/api/write-board`, formData, {

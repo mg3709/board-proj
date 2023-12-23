@@ -57,7 +57,7 @@ app.post("/api/img-upload", upload.single("image"), async (req, res) => {
 
     // 이미지 정보를 MongoDB에 저장하거나 필요한 동작 수행
     const imagePath = req.file.path; // 이미지 파일 경로
-    const imageUrl = `http://ec2-54-180-168-70.ap-northeast-2.compute.amazonaws.com:${port}/${path.basename(
+    const imageUrl = `http://ec2-43-201-250-35.ap-northeast-2.compute.amazonaws.com:${port}/${path.basename(
       imagePath
     )}`;
 

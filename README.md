@@ -73,21 +73,21 @@
     
 - chat 페이지
 
-  - socket 을 이용한 실시간 채팅 기
+  - socket 을 이용한 실시간 채팅 기능
     
 <h2>개발환경</h2>
 
 ◽ OS : <img src="https://img.shields.io/badge/windows 10-0078D6?style=for-the-badge&logo=windows10&logoColor=white" align=center>
 
-◽ IDE : 
+◽ IDE : <img src="https://img.shields.io/badge/vs code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" align=center>
 
-◽ Language : 
+◽ Language : <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" align=center> <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" align=center>
 
-◽ FrontEnd : 
+◽ FrontEnd : <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white" align=center> <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white" align=center>
 
-◽ FrameWork / Library : 
+◽ FrameWork / Library : <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" align=center> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white" align=center>
 
-◽ DB : 
+◽ DB : <img src="https://img.shields.io/badge/mongodb-47A248?style=for-the-badge&logo=sass&logoColor=white" align=center>
 
 <h2>사용 라이브러리</h2>
 

@@ -18,7 +18,7 @@
   <img src="https://img.shields.io/badge/socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white">
 </div>
 
-<h2>프로젝트 소개</h2>
+<h2>🎬 프로젝트 소개</h2>
 
 **<독후감 / 게시판 프로젝트>**
 
@@ -30,7 +30,7 @@
 
 ◽ 배포 주소 : http://board-example.com/
 
-<h2>설계 주안점</h2>
+<h2>🎬 설계 주안점</h2>
 
 <p>1. 독후감 / 자유게시판에 글을 올리고 조회 할 수 있는 기능 제공</p>
 <p>2. 조회한 게시글에 댓글을 달 수 있는 기능 제공</p>
@@ -40,7 +40,8 @@
 <p>6. Socket을 이용한 실시간 채팅 구현</p>
 <p>7. aws 의 ec2 에 nginx를 사용해 업로드</p>
 <p>8. React-Query 를 사용해 지속적으로 동기화</p>
-<h2>구현 기능</h2>
+
+<h2>🎬 구현 기능</h2>
 
 - 홈
    
@@ -75,7 +76,7 @@
 
   - socket 을 이용한 실시간 채팅 기능
     
-<h2>개발환경</h2>
+<h2>🎬 개발환경</h2>
 
 ◽ OS : <img src="https://img.shields.io/badge/windows 10-0078D6?style=for-the-badge&logo=windows10&logoColor=white" align=center>
 
@@ -89,7 +90,7 @@
 
 ◽ DB : <img src="https://img.shields.io/badge/mongodb-47A248?style=for-the-badge&logo=sass&logoColor=white" align=center>
 
-<h2>사용 라이브러리</h2>
+<h2>🎬 사용 라이브러리</h2>
 
 - BackEnd
 ```
